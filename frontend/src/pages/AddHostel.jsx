@@ -48,7 +48,7 @@ const AddHostel = () => {
   
     const data = new FormData();
   
-    // 1. APPEND ALL BASIC FIELDS
+    
     data.append('name', formData.name);
     data.append('city', formData.city);
     data.append('rent', formData.rent);
@@ -57,14 +57,14 @@ const AddHostel = () => {
     data.append('description', formData.description);
     data.append('address', formData.address);
     
-    // --> NEW FIELDS APPENDED HERE <--
+    
     data.append('roomType', formData.roomType);
     data.append('foodIncluded', formData.foodIncluded);
     
-    // Since colleges is an array of objects, we send it as a JSON string via FormData
+    
     data.append('colleges', JSON.stringify(formData.colleges)); 
   
-    // PROPERLY HANDLE FACILITIES ARRAY
+    
     if (formData.facilities) {
       const facilitiesArray = formData.facilities.split(',').map(item => item.trim());
       facilitiesArray.forEach(facility => {
@@ -72,7 +72,7 @@ const AddHostel = () => {
       });
     }
   
-    // 2. APPEND THE IMAGES
+    
     if (images && images.length > 0) {
       for (let i = 0; i < images.length; i++) {
         data.append('images', images[i]);
@@ -138,7 +138,7 @@ const AddHostel = () => {
           </div>
         </div>
 
-        {/* --- NEW SECTION: ROOM TYPE & FOOD --- */}
+        {}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium mb-1">Room Sharing Type</label>
@@ -169,7 +169,7 @@ const AddHostel = () => {
           <input type="text" name="facilities" onChange={handleChange} className="w-full border p-2 rounded" placeholder="Wifi, AC, Laundry..." />
         </div>
 
-        {/* --- NEW SECTION: NEARBY COLLEGES --- */}
+        {}
         <div className="bg-gray-50 p-4 rounded border">
           <label className="block text-sm font-medium mb-2">Nearby Colleges</label>
           {formData.colleges.map((college, index) => (

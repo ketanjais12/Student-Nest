@@ -15,7 +15,6 @@ const HostelCard = ({ hostel }) => {
     displayImage = `${BACKEND_URL}/${cleanPath}`;
   }
 
-  // Helper to map dynamic facility strings to icons
 const getIcon = (name) => {
     if (!name) return Check;
     const n = name.toLowerCase();
@@ -23,13 +22,13 @@ const getIcon = (name) => {
     if (n.includes('food') || n.includes('meal') || n.includes('mess')) return Utensils;
     if (n.includes('ac') || n.includes('air')) return Snowflake;
     if (n.includes('bed') || n.includes('sharing') || n.includes('room')) return BedDouble;
-    // New icons
+    
     if (n.includes('water') || n.includes('ro')) return Droplets;
     if (n.includes('cctv') || n.includes('camera') || n.includes('security')) return Cctv;
     if (n.includes('laundry') || n.includes('washing')) return Shirt;
 
     
-    return Check; // Fallback icon
+    return Check;
   };
 
   return (
@@ -48,7 +47,6 @@ const getIcon = (name) => {
           }}
         />
         
-        {/* Only show rating if the backend provides it, removing the random static 4.7 */}
         {hostel?.rating && (
           <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-1 shadow-sm z-10">
             <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
@@ -72,10 +70,8 @@ const getIcon = (name) => {
 
         <div className="h-px bg-gray-100 w-full my-4"></div>
 
-        {/* Dynamic Facilities from Backend */}
         <div className="grid grid-cols-2 gap-y-3 gap-x-2 mb-6">
           {hostel?.facilities && hostel.facilities.length > 0 ? (
-            // Slicing to 4 so the card height doesn't break if an owner adds 10 facilities
             hostel.facilities.slice(0, 4).map((facility, index) => {
               const Icon = getIcon(facility);
               return (

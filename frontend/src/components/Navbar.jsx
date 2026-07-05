@@ -34,8 +34,8 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // ---> UPDATED FILTER LOGIC <---
-  // Hide "Browse" for owners, and hide "For Owners" for students
+  
+  
   const navLinks = [
     { name: "Home", path: "/", icon: HomeIcon },
     { name: "Browse", path: "/hostels", icon: Compass },
@@ -72,7 +72,7 @@ const Navbar = () => {
           </span>
         </Link>
 
-        {/* Desktop Navigation */}
+        {}
         <div className="hidden md:flex items-center gap-8">
           <div className="flex gap-6">
             {navLinks.map((link) => (
@@ -118,13 +118,13 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Toggle */}
+        {}
         <button className="md:hidden p-2 text-gray-600 hover:text-blue-600 transition-colors" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {}
       {isOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-xl flex flex-col py-4 px-6 gap-4 animate-in fade-in slide-in-from-top-5 duration-200">
           {navLinks.map((link) => (

@@ -1,5 +1,5 @@
 const Hostel = require('../models/Hostel');
-const Booking = require('../models/Booking'); // Adjust these paths if your models folder is named differently
+const Booking = require('../models/Booking'); 
 
 const getOwnerDashboard = async (req, res) => {
   try {

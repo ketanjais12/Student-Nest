@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import api from '../services/api';
 
-// Check for existing user in local storage to keep them logged in across refreshes
+
 const user = JSON.parse(localStorage.getItem('user'));
 
-// Async thunk for logging in
+
 export const login = createAsyncThunk('auth/login', async (userData, thunkAPI) => {
   try {
     const response = await api.post('/auth/login', userData);
@@ -15,7 +15,7 @@ export const login = createAsyncThunk('auth/login', async (userData, thunkAPI) =
   }
 });
 
-// Async thunk for registration
+
 export const register = createAsyncThunk('auth/register', async (userData, thunkAPI) => {
   try {
     const response = await api.post('/auth/register', userData);
@@ -42,7 +42,7 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // Login Cases
+      
       .addCase(login.pending, (state) => { 
         state.isLoading = true; 
         state.error = null;
@@ -55,7 +55,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-      // Register Cases
+      
       .addCase(register.pending, (state) => { 
         state.isLoading = true; 
         state.error = null;

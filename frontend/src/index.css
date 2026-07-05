@@ -1,15 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  /* Set the default sans font stack to use Plus Jakarta Sans */
   --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
   
-  /* Modern Slate & Indigo branding palette */
   --color-primary: #4f46e5;
   --color-secondary: #4338ca;
 }
 
-/* Global resets for a premium appearance */
 body {
   font-family: var(--font-sans);
   @apply bg-slate-50/50 text-slate-800 antialiased;

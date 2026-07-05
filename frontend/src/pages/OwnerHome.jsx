@@ -24,7 +24,7 @@ const OwnerHome = () => {
     recentRequests: []
   });
 
-  // Fetch real data directly from your database
+  
   const fetchDashboardData = useCallback(async (showLoader = false) => {
     if (showLoader) setLoading(true);
     try {
@@ -53,7 +53,7 @@ const OwnerHome = () => {
   }, [fetchDashboardData]);
 
   const handleRequestAction = async (requestId, action) => {
-    // 1. OPTIMISTIC UPDATE: Instantly change the status in the table
+    
     setDashboardData((prev) => ({
       ...prev,
       recentRequests: prev.recentRequests.map((req) => 
@@ -62,16 +62,16 @@ const OwnerHome = () => {
     }));
 
     try {
-      // 2. Send the real update to the database
+      
       await api.patch(`/bookings/${requestId}/status`, { status: action });
       toast.success(`Request ${action} successfully!`);
       
-      // 3. Re-fetch in the background to update the top stats (revenue, tenants)
+      
       fetchDashboardData(false);
       
     } catch (error) {
       toast.error(error.response?.data?.message || `Failed to ${action} request`);
-      fetchDashboardData(false); // Revert table if it fails
+      fetchDashboardData(false); 
     }
   };
 
@@ -92,7 +92,7 @@ const OwnerHome = () => {
     <div className="min-h-screen bg-gray-50 pt-24 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* 1. Welcome Hero Section */}
+        {}
         <div className="bg-white rounded-3xl p-8 mb-8 border border-gray-100 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div className="max-w-2xl">
             <h1 className="text-3xl font-black text-gray-900 mb-2">
@@ -113,7 +113,7 @@ const OwnerHome = () => {
           </div>
         </div>
 
-        {/* 2. Quick Overview & Earnings Grid */}
+        {}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex items-start justify-between">
@@ -172,10 +172,10 @@ const OwnerHome = () => {
           </div>
         </div>
 
-        {/* Main Dashboard Layout */}
+        {}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           
-          {/* Left Column: Recent Booking Requests (Database Driven) */}
+          {}
           <div className="lg:col-span-2 space-y-8">
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
               <div className="p-6 border-b border-gray-100">
@@ -261,10 +261,10 @@ const OwnerHome = () => {
             </div>
           </div>
 
-          {/* Right Column: Quick Actions & Tips */}
+          {}
           <div className="space-y-6">
             
-            {/* Manage Your Hostels */}
+            {}
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
               <h2 className="text-lg font-bold text-gray-900 mb-2">Manage Your Hostels</h2>
               <p className="text-sm text-gray-600 mb-4">
@@ -283,7 +283,7 @@ const OwnerHome = () => {
               </div>
             </div>
 
-            {/* Tips for Owners */}
+            {}
             <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-100 shadow-sm p-6">
               <div className="flex items-center gap-2 mb-4">
                 <Lightbulb className="w-5 h-5 text-blue-600" />
@@ -305,7 +305,7 @@ const OwnerHome = () => {
               </ul>
             </div>
 
-            {/* Recent Notifications (Static Placeholder representing system alerts) */}
+            {}
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
               <div className="flex items-center gap-2 mb-4">
                 <Bell className="w-5 h-5 text-gray-700" />

@@ -29,7 +29,6 @@ const MyHostels = () => {
     try {
       await api.delete(`/hostels/${id}`);
       toast.success("Hostel deleted successfully");
-      // Remove the deleted hostel from the UI without refreshing
       setHostels(hostels.filter(hostel => hostel._id !== id));
     } catch (error) {
       toast.error("Failed to delete hostel");
@@ -68,7 +67,6 @@ const MyHostels = () => {
             {hostels.map((hostel) => (
               <div key={hostel._id} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col md:flex-row gap-6 items-center">
                 
-                {/* Thumbnail */}
                 <div className="w-full md:w-48 h-32 bg-gray-200 rounded-xl overflow-hidden shrink-0">
                   {hostel.images && hostel.images.length > 0 ? (
                     <img 
@@ -81,7 +79,6 @@ const MyHostels = () => {
                   )}
                 </div>
 
-                {/* Info */}
                 <div className="flex-1 w-full">
                   <div className="flex justify-between items-start">
                     <div>
@@ -105,7 +102,6 @@ const MyHostels = () => {
                   </div>
                 </div>
 
-                {/* Actions */}
                 <div className="flex md:flex-col gap-3 w-full md:w-auto shrink-0">
                   <Link 
                     to={`/edit-hostel/${hostel._id}`} 

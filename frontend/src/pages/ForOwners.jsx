@@ -23,25 +23,20 @@ const ForOwners = () => {
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
       
-      {/* 1. HERO SECTION */}
       <section className="pt-28 pb-12 bg-slate-50">
         <div className="container mx-auto px-6 max-w-6xl">
           
-          {/* Bounded Hero Card Container */}
           <div className="relative rounded-[2rem] md:rounded-[3rem] overflow-hidden min-h-[500px] md:h-[70vh] flex items-center p-8 md:p-16 shadow-2xl shadow-slate-900/10 animate-in fade-in zoom-in-95 duration-700 ease-out">
             
-            {/* Background Image (Contained inside the card) */}
             <div 
               className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
               style={{
                 backgroundImage: `url('https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')`
               }}
             >
-              {/* Premium Dark Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/70 to-transparent"></div>
             </div>
 
-            {/* Hero Content */}
             <div className="relative z-10 text-white max-w-2xl">
               <span className="inline-block py-1 px-3 rounded-full bg-blue-500/20 text-blue-300 font-semibold text-sm mb-6 border border-blue-500/30 backdrop-blur-sm">
                 Hostel Owners Portal
@@ -53,7 +48,6 @@ const ForOwners = () => {
                 Connect with thousands of verified students actively searching for safe and affordable accommodation near their colleges.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                {/* Changed to Link component pointing to signup */}
                 <Link to="/signup" className="bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-blue-600/30 flex items-center justify-center w-max">
                   List Your Hostel <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
@@ -64,7 +58,6 @@ const ForOwners = () => {
         </div>
       </section>
 
-      {/* 2. TRUST SECTION (Fixed Overlap by removing -mt-20) */}
       <section className="relative z-20 container mx-auto px-6 max-w-6xl pb-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
@@ -83,7 +76,6 @@ const ForOwners = () => {
         </div>
       </section>
 
-      {/* 3. WHY CHOOSE STUDENTNEST */}
       <section className="py-24 bg-slate-50">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="text-center mb-16">
@@ -112,13 +104,11 @@ const ForOwners = () => {
         </div>
       </section>
 
-      {/* 4. HOW IT WORKS (Fixed Timeline Alignment) */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-6 max-w-5xl">
           <h2 className="text-4xl font-extrabold text-center text-slate-900 mb-16">How It Works</h2>
           
           <div className="relative max-w-4xl mx-auto">
-            {/* Vertical Center Line */}
             <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-1 bg-blue-100 transform md:-translate-x-1/2 rounded-full"></div>
 
             {[
@@ -131,7 +121,6 @@ const ForOwners = () => {
             ].map((item, idx) => (
               <div key={idx} className={`relative flex items-center justify-between mb-12 last:mb-0 ${idx % 2 === 0 ? 'md:flex-row-reverse' : 'flex-row'}`}>
                 
-                {/* Content Box */}
                 <div className="w-full md:w-5/12 pl-16 md:pl-0">
                   <div className={`bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow ${idx % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
                     <h3 className="text-xl font-bold text-slate-900 mb-1">{item.title}</h3>
@@ -139,12 +128,10 @@ const ForOwners = () => {
                   </div>
                 </div>
 
-                {/* Timeline Dot */}
                 <div className="absolute left-6 md:left-1/2 w-12 h-12 rounded-full bg-blue-600 border-4 border-white shadow-lg flex items-center justify-center text-white font-bold transform -translate-x-1/2 z-10">
                   {item.step}
                 </div>
 
-                {/* Empty space for alternating layout on desktop */}
                 <div className="hidden md:block w-5/12"></div>
               </div>
             ))}
@@ -152,12 +139,10 @@ const ForOwners = () => {
         </div>
       </section>
 
-      {/* 5. FEATURES & 6. COMMISSION MODEL Split */}
       <section className="py-24 bg-slate-50">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
-            {/* Features Grid */}
             <div>
               <h2 className="text-3xl font-extrabold text-slate-900 mb-8">Everything You Need to Manage</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -179,9 +164,7 @@ const ForOwners = () => {
               </div>
             </div>
 
-            {/* Commission Pricing Card */}
             <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-10 text-white shadow-2xl relative overflow-hidden">
-              {/* Decorative elements */}
               <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl -mr-20 -mt-20"></div>
               <div className="absolute bottom-0 left-0 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl -ml-10 -mb-10"></div>
               
@@ -204,13 +187,11 @@ const ForOwners = () => {
         </div>
       </section>
 
-      {/* 7. DASHBOARD PREVIEW */}
       <section className="py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-6 max-w-6xl text-center">
           <h2 className="text-4xl font-extrabold text-slate-900 mb-6">Powerful Owner Dashboard</h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-16">Get deep insights into your property performance. Manage bookings, track revenue, and monitor availability all from one place.</p>
           
-          {/* Mock UI Wrapper */}
           <div className="max-w-4xl mx-auto bg-slate-50 border border-slate-200 rounded-[2rem] p-4 shadow-2xl shadow-blue-900/5 relative">
             <div className="absolute top-4 left-6 flex gap-2">
                <div className="w-3 h-3 rounded-full bg-red-400"></div>
@@ -240,7 +221,6 @@ const ForOwners = () => {
         </div>
       </section>
 
-      {/* 8. TESTIMONIALS */}
       <section className="py-24 bg-slate-50">
         <div className="container mx-auto px-6 max-w-6xl">
           <h2 className="text-4xl font-extrabold text-center text-slate-900 mb-16">Loved by Property Owners</h2>
@@ -271,7 +251,6 @@ const ForOwners = () => {
         </div>
       </section>
 
-      {/* 9. FAQ SECTION */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-6 max-w-3xl">
           <h2 className="text-4xl font-extrabold text-center text-slate-900 mb-12">Frequently Asked Questions</h2>
@@ -302,12 +281,10 @@ const ForOwners = () => {
         </div>
       </section>
 
-      {/* 10. FINAL CTA */}
       <section className="py-24">
         <div className="container mx-auto px-6 max-w-5xl">
           <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-[3rem] p-12 md:p-20 text-center text-white shadow-2xl relative overflow-hidden">
-             {/* Background glow effects */}
-             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+=             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
                <div className="absolute top-[-50%] left-[-10%] w-[70%] h-[150%] bg-white/10 rotate-12 transform origin-top-left rounded-[100%] blur-3xl"></div>
              </div>
 
@@ -316,7 +293,6 @@ const ForOwners = () => {
               <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
                 Join hundreds of property owners who are already maximizing their revenue with StudentNest.
               </p>
-              {/* Changed to Link component pointing to signup */}
               <Link to="/signup" className="inline-block bg-white text-blue-600 hover:bg-slate-50 font-bold py-5 px-10 rounded-2xl text-lg transition-all duration-300 transform hover:-translate-y-1 shadow-xl hover:shadow-white/20">
                 List Your Hostel for Free
               </Link>

@@ -13,7 +13,7 @@ const EditHostel = () => {
     gender: 'boys', facilities: ''
   });
 
-  // Fetch existing data on mount
+  
   useEffect(() => {
     const fetchHostel = async () => {
       try {
@@ -34,7 +34,7 @@ const EditHostel = () => {
     setLoading(true);
     
     try {
-      // Use PUT request to update
+      
       await api.put(`/hostels/${id}`, formData);
       toast.success("Hostel updated successfully!");
       navigate('/owner-dashboard');
@@ -45,5 +45,5 @@ const EditHostel = () => {
     }
   };
 
-  // ... (Include your existing change handlers and JSX form structure here)
+  
 };

@@ -7,7 +7,7 @@ import { CheckCircle, XCircle, Phone, Clock, FileText, Building, PlusCircle } fr
 const OwnerDashboard = () => {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [actionLoading, setActionLoading] = useState(null); // Tracks which booking is being updated
+  const [actionLoading, setActionLoading] = useState(null); 
 
   useEffect(() => {
     fetchOwnerBookings();
@@ -30,7 +30,7 @@ const OwnerDashboard = () => {
       await api.put(`/bookings/${bookingId}/status`, { status: newStatus });
       toast.success(`Booking ${newStatus} successfully!`);
       
-      // Update the local state so the UI reflects the change instantly
+      
       setBookings((prevBookings) => 
         prevBookings.map((b) => 
           b._id === bookingId ? { ...b, status: newStatus } : b
@@ -50,11 +50,11 @@ const OwnerDashboard = () => {
   return (
     <div className="container mx-auto p-6 pt-28 min-h-screen bg-gray-50">
       
-      {/* Dashboard Title */}
+      {}
       <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">Owner Dashboard</h1>
       <p className="text-gray-500 mb-8 mt-1">Manage your properties and review incoming student bookings.</p>
       
-      {/* ---> NEW: QUICK ACTIONS HUB <--- */}
+      {}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
         <Link 
           to="/add-hostel" 
@@ -83,7 +83,7 @@ const OwnerDashboard = () => {
         </Link>
       </div>
 
-      {/* Bookings Section */}
+      {}
       <h2 className="text-2xl font-bold mb-6 text-gray-900 tracking-tight">Booking Requests</h2>
       
       {bookings.length === 0 ? (
@@ -95,7 +95,7 @@ const OwnerDashboard = () => {
           {bookings.map((booking) => (
             <div key={booking._id} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col hover:shadow-md transition-shadow">
               
-              {/* Header: Hostel & Status */}
+              {}
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <h3 className="font-bold text-lg text-gray-900">
@@ -115,7 +115,7 @@ const OwnerDashboard = () => {
                 </span>
               </div>
 
-              {/* Student Details */}
+              {}
               <div className="bg-gray-50 rounded-xl p-4 mb-6 space-y-3 flex-grow">
                 <div className="font-semibold text-gray-800 border-b border-gray-200 pb-2 mb-2">
                   {booking.student?.name || "Unknown Student"}
@@ -131,7 +131,7 @@ const OwnerDashboard = () => {
                   <span><strong className="text-gray-700">Duration:</strong> {booking.duration} months</span>
                 </div>
 
-                {/* Secure Contact Logic */}
+                {}
                 <div className="flex items-center text-sm">
                   <Phone className={`h-4 w-4 mr-2 ${booking.status === 'paid' ? 'text-green-500' : 'text-gray-400'}`} />
                   {booking.status === 'paid' ? (
@@ -142,7 +142,7 @@ const OwnerDashboard = () => {
                 </div>
               </div>
 
-              {/* Action Buttons (Only show if pending) */}
+              {}
               {booking.status === 'pending' && (
                 <div className="flex gap-3 mt-auto">
                   <button
@@ -164,7 +164,7 @@ const OwnerDashboard = () => {
                 </div>
               )}
 
-              {/* Messages for other statuses */}
+              {}
               {booking.status === 'accepted' && (
                 <div className="text-center text-sm font-medium text-amber-600 bg-amber-50 py-3 rounded-xl">
                   Waiting for student to pay...

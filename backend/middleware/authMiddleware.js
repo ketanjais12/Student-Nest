@@ -11,25 +11,25 @@ const protect = async (req, res, next) => {
       
       req.user = await User.findById(decoded.id).select('-password');
       
-      // FIX: Check if the user actually exists in the DB to prevent downstream crashes
+      
       if (!req.user) {
         return res.status(401).json({ message: 'User belonging to this token no longer exists' });
       }
 
-      return next(); // FIX: Explicitly return to stop execution here
+      return next(); 
     } catch (error) {
-      return res.status(401).json({ message: 'Not authorized, token failed' }); // FIX: Added return
+      return res.status(401).json({ message: 'Not authorized, token failed' }); 
     }
   }
 
   if (!token) {
-    return res.status(401).json({ message: 'Not authorized, no token' }); // FIX: Added return
+    return res.status(401).json({ message: 'Not authorized, no token' }); 
   }
 };
 
 const authorize = (...roles) => {
   return (req, res, next) => {
-    // FIX: Add a safe check to ensure req.user exists before checking the role
+    
     if (!req.user || !roles.includes(req.user.role)) {
       return res.status(403).json({ 
         message: `Role ${req.user?.role || 'Unknown'} is not authorized` 

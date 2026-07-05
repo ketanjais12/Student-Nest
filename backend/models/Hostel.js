@@ -22,7 +22,7 @@ const hostelSchema = new mongoose.Schema({
   },
   colleges: [{
     name: { type: String, required: true },
-    distance: { type: String, required: true } // e.g., "1.2 km"
+    distance: { type: String, required: true } 
   }]
 }, { timestamps: true });
 

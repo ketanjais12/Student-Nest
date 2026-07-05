@@ -9,7 +9,7 @@ import {
   Bed, Coffee 
 } from 'lucide-react';
 
-const BACKEND_URL = "http://localhost:5000"; // Ensure this matches your backend port
+const BACKEND_URL = "http://localhost:5000"; 
 
 const HostelDetails = () => {
   const { id } = useParams();
@@ -21,7 +21,6 @@ const HostelDetails = () => {
   const [showModal, setShowModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   
-  // NEW: State to track the currently clicked image for the full-screen view
   const [selectedImage, setSelectedImage] = useState(null);
 
   const [bookingData, setBookingData] = useState({
@@ -30,14 +29,12 @@ const HostelDetails = () => {
     purpose: ''
   });
 
-  // Helper function to fix Windows backslashes in image paths
   const getImageUrl = (imagePath) => {
     if (!imagePath) return "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?q=80&w=800";
     const cleanPath = imagePath.replace(/\\/g, "/");
     return `${BACKEND_URL}/${cleanPath}`;
   };
 
-  // Icon Mapper
   const getIcon = (name) => {
     const n = name.toLowerCase();
     if (n.includes('wifi')) return Wifi;
@@ -70,7 +67,6 @@ const HostelDetails = () => {
   const handleBookingSubmit = async (e) => {
     e.preventDefault();
     
-    // Safety check: ensure user is logged in
     if (!user) {
       toast.error("You must be logged in to request a booking.");
       return;
@@ -79,7 +75,6 @@ const HostelDetails = () => {
     setIsSubmitting(true);
 
     try {
-      // Payload strictly matches bookingSchema
       await api.post('/bookings', {
         student: user._id,               
         hostelId: id,                      
@@ -102,7 +97,6 @@ const HostelDetails = () => {
     <div className="min-h-screen bg-gray-50 pt-24 pb-20">
       <div className="max-w-6xl mx-auto px-4">
         
-        {/* Header */}
         <div className="mb-6">
           <h1 className="text-4xl font-black text-gray-900">{hostel.name}</h1>
           <div className="flex flex-wrap items-center gap-4 mt-3 text-gray-600">
@@ -118,7 +112,6 @@ const HostelDetails = () => {
           </div>
         </div>
 
-        {/* Dynamic Image Gallery with fixed URLs & Click Handlers */}
         <div className={`grid gap-2 mb-10 ${hostel.images?.length === 1 ? 'grid-cols-1' : 'grid-cols-2 md:grid-cols-4'} h-[400px]`}>
           {hostel.images?.length > 0 ? (
             <>
@@ -150,7 +143,6 @@ const HostelDetails = () => {
         <div className="grid lg:grid-cols-3 gap-10">
           <div className="lg:col-span-2 space-y-8">
             
-            {/* Quick Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm">
                 <div className="text-sm text-gray-500 mb-1">Availability</div>
@@ -183,7 +175,6 @@ const HostelDetails = () => {
               </div>
             </div>
 
-            {/* Description Section */}
             {hostel.description && (
               <section>
                 <h2 className="text-2xl font-bold mb-4">About this hostel</h2>
@@ -193,7 +184,6 @@ const HostelDetails = () => {
               </section>
             )}
 
-            {/* Amenities Section */}
             <section>
               <h2 className="text-2xl font-bold mb-6">What this place offers</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -209,7 +199,6 @@ const HostelDetails = () => {
               </div>
             </section>
 
-          {/* Nearby Colleges Section */}
           <section>
             <h2 className="text-2xl font-bold mb-6">Nearby Colleges</h2>
             <div className="bg-white rounded-2xl border border-gray-100 p-6 space-y-4">
@@ -232,7 +221,6 @@ const HostelDetails = () => {
           </section>
           </div>
 
-          {/* Sticky Sidebar */}
           <div className="lg:col-span-1">
             <div className="sticky top-28 bg-white p-8 rounded-3xl border border-gray-100 shadow-xl">
               <h3 className="text-xl font-bold mb-4">Interested in {hostel.name}?</h3>
@@ -249,7 +237,6 @@ const HostelDetails = () => {
         </div>
       </div>
       
-      {/* Booking Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white p-8 rounded-2xl max-w-md w-full relative shadow-2xl">
@@ -313,13 +300,12 @@ const HostelDetails = () => {
         </div>
       )}
 
-      {/* NEW: Full Screen Image Lightbox */}
       {selectedImage && (
         <div 
           className="fixed inset-0 bg-black/90 flex items-center justify-center z-[60] p-4 cursor-zoom-out"
           onClick={() => setSelectedImage(null)}
         >
-          {/* Close Button */}
+          
           <button 
             onClick={() => setSelectedImage(null)} 
             className="absolute top-6 right-6 text-white hover:text-gray-300 bg-white/10 hover:bg-white/20 rounded-full w-10 h-10 flex items-center justify-center transition-colors"
@@ -327,12 +313,11 @@ const HostelDetails = () => {
             ✕
           </button>
           
-          {/* Image */}
           <img 
             src={selectedImage} 
             alt="Full screen preview" 
             className="max-w-full max-h-[90vh] object-contain rounded-lg cursor-default shadow-2xl"
-            onClick={(e) => e.stopPropagation()} // Prevents the background click from closing when clicking the image itself
+            onClick={(e) => e.stopPropagation()} 
           />
         </div>
       )}

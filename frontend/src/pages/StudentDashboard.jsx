@@ -6,7 +6,7 @@ import { CreditCard, Phone, Mail, User, MapPin, IndianRupee, Clock } from 'lucid
 const StudentDashboard = () => {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [paymentLoading, setPaymentLoading] = useState(null); // Tracks which booking is paying
+  const [paymentLoading, setPaymentLoading] = useState(null); 
 
   useEffect(() => {
     fetchStudentBookings();
@@ -26,16 +26,16 @@ const StudentDashboard = () => {
   const handlePayment = async (bookingId) => {
     setPaymentLoading(bookingId);
     try {
-      // 1. Ask your backend to create a genuine server-side order
-     // ✅ CORRECT (Passing the Bearer token safely)
-const token = localStorage.getItem('token'); // Retrieve your saved JWT string
+      
+     
+const token = localStorage.getItem('token'); 
 
 const { data } = await api.post(
   `/bookings/${bookingId}/create-order`,
-  {}, // Second argument is the request body (empty for this endpoint)
+  {}, 
   {
     headers: {
-      Authorization: `Bearer ${token}`, // Attaches token to pass protect middleware
+      Authorization: `Bearer ${token}`, 
     },
   }
 );
@@ -44,16 +44,16 @@ const { data } = await api.post(
         throw new Error("Could not initiate order transaction setup.");
       }
 
-      // 2. Open up Razorpay's UI checkout modal with configurations
+      
       const options = {
-        key: "rzp_test_T4nZ7QKW5KEuj5", // Inject your public key string here
+        key: "rzp_test_T4nZ7QKW5KEuj5", 
         amount: data.amount,
         currency: data.currency,
         name: "StudentNest",
         description: "Hostel Secure Booking Fee",
-        order_id: data.order_id, // Tie the checkout modal directly to our backend order
+        order_id: data.order_id, 
         handler: async function (response) {
-          // 3. This callback fires immediately after the user enters their pin/card details successfully
+          
           try {
             const verificationPayload = {
               razorpay_order_id: response.razorpay_order_id,
@@ -61,28 +61,28 @@ const { data } = await api.post(
               razorpay_signature: response.razorpay_signature,
             };
 
-            // Send proof of payment back to your API to verify legitimacy cryptographically
+            
             const verifyRes = await api.post(`/bookings/${bookingId}/verify-payment`, verificationPayload);
             
             if (verifyRes.data.success) {
               toast.success("Payment secured! Owner contact details are unlocked.");
-              fetchStudentBookings(); // Refresh local screen data mapping
+              fetchStudentBookings(); 
             }
           } catch (err) {
             toast.error("Internal application validation failed.");
           }
         },
         prefill: {
-          name: "Student Name", // Optional parameter expansions
+          name: "Student Name", 
           email: "student@example.com",
         },
         theme: {
-          color: "#2563EB", // Matches your blue styling accent nicely
+          color: "#2563EB", 
         },
       };
 
       const rzp = new window.Razorpay(options);
-      rzp.open(); // Trigger the checkout popup script sequence manually
+      rzp.open(); 
 
     } catch (error) {
       toast.error(error?.response?.data?.message || "Could not link to payment gateways.");
@@ -108,7 +108,7 @@ const { data } = await api.post(
           {bookings.map((booking) => (
             <div key={booking._id} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col hover:shadow-md transition-shadow">
               
-              {/* Header: Hostel Title & Status */}
+              {}
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <h3 className="font-bold text-lg text-gray-900">
@@ -128,7 +128,7 @@ const { data } = await api.post(
                 </span>
               </div>
 
-              {/* Property & Request Specs */}
+              {}
               <div className="text-sm space-y-2 text-gray-600 mb-4 border-b border-gray-100 pb-4">
                 <div className="flex items-center">
                   <MapPin className="h-4 w-4 mr-2 text-gray-400" />
@@ -144,24 +144,24 @@ const { data } = await api.post(
                 </div>
               </div>
 
-              {/* Secure Contextual Area */}
+              {}
               <div className="mt-auto pt-2">
                 
-                {/* STATUS: PENDING */}
+                {}
                 {booking.status === 'pending' && (
                   <div className="text-center text-sm font-medium text-blue-600 bg-blue-50 py-3 rounded-xl border border-blue-100">
                     Awaiting Owner Approval...
                   </div>
                 )}
 
-                {/* STATUS: REJECTED */}
+                {}
                 {booking.status === 'rejected' && (
                   <div className="text-center text-sm font-medium text-red-600 bg-red-50 py-3 rounded-xl border border-red-100">
                     This request was declined by the owner.
                   </div>
                 )}
 
-                {/* STATUS: ACCEPTED (Show Pay Now Button) */}
+                {}
                 {booking.status === 'accepted' && (
                   <div className="space-y-3">
                     <p className="text-xs text-amber-700 bg-amber-50 p-2.5 rounded-lg border border-amber-100 font-medium">
@@ -178,7 +178,7 @@ const { data } = await api.post(
                   </div>
                 )}
 
-                {/* STATUS: PAID (Safely Reveal Contact Info) */}
+                {}
                 {booking.status === 'paid' && (
                   <div className="bg-green-50/60 rounded-xl p-4 border border-green-100 space-y-2">
                     <div className="text-xs font-bold text-green-800 uppercase tracking-wider mb-2 flex items-center">

@@ -30,7 +30,6 @@ const Home = () => {
     <div className="min-h-screen bg-white pt-28 pb-16">
       <div className="max-w-7xl mx-auto px-6">
         
-        {/* Main Banner with Slider */}
         <div className="relative w-full h-[500px] rounded-3xl overflow-hidden shadow-2xl mb-8">
           {slides.map((img, i) => (
             <div
@@ -50,7 +49,6 @@ const Home = () => {
               Find your perfect <span className="text-blue-400">hostel</span> near your college.
             </h1>
             
-            {/* Explore Hostels Button */}
             <div className="mt-10">
               <button
                 onClick={() => navigate("/hostels")}
@@ -73,7 +71,6 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Statistics Row */}
         <div className="w-full bg-white border border-gray-100 rounded-2xl p-6 shadow-xl shadow-gray-100/50 mb-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 divide-x-0 md:divide-x divide-gray-100">
             {stats.map((stat, index) => (
@@ -92,7 +89,6 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Feature Grid Section */}
         <div className="grid md:grid-cols-3 gap-8">
           {[
             { icon: BedDouble, title: "Modern Amenities", desc: "High-speed Wi-Fi, laundry, and study desks included." },
@@ -107,7 +103,6 @@ const Home = () => {
           ))}
         </div>
 
-        {/* --- How it Works Section --- */}
         <div className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-6">
             <div id="how-it-works" className="text-center mb-16">
@@ -148,7 +143,6 @@ const Home = () => {
           </div>
         </div>
 
-        {/* --- Testimonials Section --- */}
         <section className="py-20 bg-gray-50">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">

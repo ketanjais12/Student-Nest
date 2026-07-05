@@ -3,7 +3,7 @@ import {
   Mail, Phone, MapPin, GraduationCap, ArrowRight 
 } from 'lucide-react';
 
-// Manual SVG components to fix the "export not found" error
+
 const Facebook = (props) => (
   <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
@@ -25,10 +25,10 @@ const Instagram = (props) => (
 );
 
 const Footer = () => {
-  // Define routes for your navigation links
+  
   const quickLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Browse Hostels', path: '/hostels' }, // Adjust path if different
+    { name: 'Browse Hostels', path: '/hostels' }, 
     { name: 'About Us', path: '/about' },
     { name: 'Contact', path: '/contact' }
   ];
@@ -43,10 +43,10 @@ const Footer = () => {
     <footer className="bg-gray-50 border-t border-gray-100 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-6">
         
-        {/* Top Grid Section */}
+        {}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           
-          {/* Brand & Description */}
+          {}
           <div className="lg:col-span-1">
             <Link to="/" className="text-2xl font-extrabold text-gray-900 flex items-center gap-2 mb-4 tracking-tight">
               <div className="bg-blue-600 p-1.5 rounded-lg text-white">
@@ -57,7 +57,7 @@ const Footer = () => {
             <p className="text-gray-500 mb-6 leading-relaxed">
               Making student living simple, secure, and stylish. Your trusted partner in finding the perfect home away from home.
             </p>
-            {/* Social Icons */}
+            {}
             <div className="flex space-x-3">
               {[Facebook, Twitter, Instagram].map((Icon, i) => (
                 <a key={i} href="#" className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:text-blue-600 hover:border-blue-200 hover:bg-blue-50 transition-all">
@@ -67,7 +67,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {}
           <div>
             <h3 className="font-bold text-gray-900 mb-6 uppercase tracking-wider text-sm">Quick Links</h3>
             <ul className="space-y-4">
@@ -81,7 +81,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* For Property Owners */}
+          {}
           <div>
             <h3 className="font-bold text-gray-900 mb-6 uppercase tracking-wider text-sm">For Owners</h3>
             <ul className="space-y-4">
@@ -95,7 +95,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {}
           <div>
             <h3 className="font-bold text-gray-900 mb-6 uppercase tracking-wider text-sm">Contact Us</h3>
             <ul className="space-y-4">
@@ -115,7 +115,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Copyright */}
+        {}
         <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-400 text-sm">
             © {new Date().getFullYear()} StudentNest. All rights reserved.

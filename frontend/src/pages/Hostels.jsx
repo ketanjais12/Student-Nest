@@ -9,7 +9,7 @@ const Hostels = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
-  // Get hostels state and user auth state from Redux
+  
   const { hostels, loading } = useSelector((state) => state.hostels);
   const { user } = useSelector((state) => state.auth); 
   
@@ -28,14 +28,14 @@ const Hostels = () => {
   };
 
   return (
-    // Moved the top padding (pt-28) here so the whole page starts below the fixed Navbar
+    
     <div className="container mx-auto px-4 pt-28 pb-12 min-h-screen bg-gray-50">
       
-      {/* Page Header & Add Hostel Button */}
+      {}
       <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
         <h1 className="text-3xl font-extrabold text-gray-900">Available Hostels</h1>
         
-        {/* Conditionally render for owners */}
+        {}
         {user?.role === 'owner' && (
           <button 
             onClick={() => navigate('/add-hostel')}
@@ -46,7 +46,7 @@ const Hostels = () => {
         )}
       </div>
 
-      {/* Search and Filters Bar */}
+      {}
       <div className="mb-8 flex flex-col md:flex-row gap-4 bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
         <div className="flex-1 relative">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
@@ -54,7 +54,7 @@ const Hostels = () => {
             type="text" 
             name="search"
             placeholder="Search hostels..." 
-            // Removed pt-24 from here and replaced with standard padding (py-3)
+            
             className="w-full py-3 pl-12 pr-4 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all"
             onChange={handleFilterChange}
           />
@@ -78,7 +78,7 @@ const Hostels = () => {
         </select>
       </div>
 
-      {/* Loading & Grid Display */}
+      {}
       {loading ? (
         <div className="flex justify-center items-center h-64">
           <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-blue-600 border-t-transparent"></div>

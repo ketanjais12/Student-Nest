@@ -42,7 +42,7 @@ const EditHostel = () => {
     e.preventDefault();
     setSubmitting(true);
     
-    // Convert comma separated facilities back to array format for backend
+    
     const payload = {
       ...formData,
       facilities: formData.facilities.split(',').map(item => item.trim())

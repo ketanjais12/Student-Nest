@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
-import { register } from '../features/authSlice'; // Make sure to add this to authSlice!
+import { register } from '../features/authSlice'; 
 import toast from 'react-hot-toast';
 
 const Signup = () => {

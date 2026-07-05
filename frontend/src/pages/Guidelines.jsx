@@ -6,7 +6,7 @@ const Guidelines = () => {
     <div className="min-h-screen bg-gray-50 pt-24 pb-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header */}
+        {}
         <div className="mb-12">
           <h1 className="text-3xl md:text-4xl font-black text-gray-900 mb-4 flex items-center gap-3">
             <BookOpen className="text-blue-600" size={36} />
@@ -17,7 +17,7 @@ const Guidelines = () => {
           </p>
         </div>
 
-        {/* Guidelines for Students */}
+        {}
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
             <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm uppercase tracking-wide">For Students</span>
@@ -48,7 +48,7 @@ const Guidelines = () => {
           </ul>
         </div>
 
-        {/* Guidelines for Owners */}
+        {}
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
             <span className="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-lg text-sm uppercase tracking-wide">For Property Owners</span>
@@ -79,7 +79,7 @@ const Guidelines = () => {
           </ul>
         </div>
 
-        {/* Zero Tolerance Policy */}
+        {}
         <div className="bg-red-50 rounded-2xl border border-red-100 p-8">
           <div className="flex items-center gap-3 mb-4">
             <AlertCircle className="w-6 h-6 text-red-600" />

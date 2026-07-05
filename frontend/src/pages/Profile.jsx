@@ -15,7 +15,7 @@ const Profile = () => {
     setLoading(true);
     try {
       const { data } = await api.put('/auth/profile', formData);
-      // Update local storage user data to reflect new name
+      
       const updatedUser = { ...user, name: data.name, email: data.email };
       localStorage.setItem('user', JSON.stringify(updatedUser));
       toast.success('Profile updated successfully! Please re-login to see changes globally.');

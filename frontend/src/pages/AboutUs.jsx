@@ -6,7 +6,7 @@ const AboutUs = () => {
     <div className="min-h-screen bg-white pt-24 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Hero Section */}
+        {}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 tracking-tight">
             Making Student Living <span className="text-blue-600">Simple & Secure</span>
@@ -16,7 +16,7 @@ const AboutUs = () => {
           </p>
         </div>
 
-        {/* Stats Grid */}
+        {}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
           {[
             { label: 'Verified Hostels', value: '500+' },
@@ -31,7 +31,7 @@ const AboutUs = () => {
           ))}
         </div>
 
-        {/* Our Mission & Vision */}
+        {}
         <div className="grid md:grid-cols-2 gap-12 mb-20">
           <div className="bg-gray-50 rounded-3xl p-8 border border-gray-100">
             <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-blue-600 mb-6">
@@ -53,7 +53,7 @@ const AboutUs = () => {
           </div>
         </div>
 
-        {/* Core Values */}
+        {}
         <div>
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Core Values</h2>

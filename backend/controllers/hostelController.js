@@ -33,23 +33,23 @@ exports.getHostelById = async (req, res) => {
 
 exports.createHostel = async (req, res) => {
   try {
-    // 1. Map through the files to get their paths
+    
     const imageUrls = req.files ? req.files.map(file => file.path) : [];
 
-    // 2. Extract body data
+    
     let hostelData = { ...req.body };
 
-    // --> NEW: Parse the stringified colleges array back into JSON <--
+    
     if (hostelData.colleges && typeof hostelData.colleges === 'string') {
       try {
         hostelData.colleges = JSON.parse(hostelData.colleges);
       } catch (parseError) {
         console.error("Failed to parse colleges JSON:", parseError);
-        hostelData.colleges = []; // Fallback to avoid crashing
+        hostelData.colleges = []; 
       }
     }
 
-    // 3. Create the hostel object with the image paths
+    
     const newHostel = await Hostel.create({
       ...hostelData,
       images: imageUrls,
@@ -67,14 +67,14 @@ exports.updateHostel = async (req, res) => {
     let hostel = await Hostel.findById(req.params.id);
     if (!hostel) return res.status(404).json({ message: 'Hostel not found' });
     
-    // Ensure the person updating is the owner
+    
     if (hostel.owner.toString() !== req.user._id.toString()) {
       return res.status(401).json({ message: 'Not authorized to update this hostel' });
     }
 
     let updateData = { ...req.body };
 
-    // --> NEW: Also parse colleges here in case your frontend update logic uses FormData <--
+    
     if (updateData.colleges && typeof updateData.colleges === 'string') {
       try {
         updateData.colleges = JSON.parse(updateData.colleges);
@@ -106,10 +106,10 @@ exports.deleteHostel = async (req, res) => {
   }
 };
 
-// Add this new function to your hostelController.js
+
 exports.getMyHostels = async (req, res) => {
   try {
-    // Find all hostels where the owner matches the logged-in user's ID
+    
     const hostels = await Hostel.find({ owner: req.user._id }).sort({ createdAt: -1 });
     res.json(hostels);
   } catch (error) {
