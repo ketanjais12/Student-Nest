@@ -1,0 +1,42 @@
+const jwt = require('jsonwebtoken');
+const User = require('../models/User');
+
+const protect = async (req, res, next) => {
+  let token;
+
+  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+    try {
+      token = req.headers.authorization.split(' ')[1];
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      
+      req.user = await User.findById(decoded.id).select('-password');
+      
+      // FIX: Check if the user actually exists in the DB to prevent downstream crashes
+      if (!req.user) {
+        return res.status(401).json({ message: 'User belonging to this token no longer exists' });
+      }
+
+      return next(); // FIX: Explicitly return to stop execution here
+    } catch (error) {
+      return res.status(401).json({ message: 'Not authorized, token failed' }); // FIX: Added return
+    }
+  }
+
+  if (!token) {
+    return res.status(401).json({ message: 'Not authorized, no token' }); // FIX: Added return
+  }
+};
+
+const authorize = (...roles) => {
+  return (req, res, next) => {
+    // FIX: Add a safe check to ensure req.user exists before checking the role
+    if (!req.user || !roles.includes(req.user.role)) {
+      return res.status(403).json({ 
+        message: `Role ${req.user?.role || 'Unknown'} is not authorized` 
+      });
+    }
+    next();
+  };
+};
+
+module.exports = { protect, authorize };
