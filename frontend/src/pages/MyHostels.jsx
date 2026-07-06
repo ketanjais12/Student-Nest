@@ -70,7 +70,7 @@ const MyHostels = () => {
                 <div className="w-full md:w-48 h-32 bg-gray-200 rounded-xl overflow-hidden shrink-0">
                   {hostel.images && hostel.images.length > 0 ? (
                     <img 
-                      src={`http://localhost:5000/${hostel.images[0].replace(/\\/g, "/")}`} 
+                      src={`https://student-nest-bjtk.onrender.com${hostel.images[0].replace(/\\/g, "/")}`} 
                       alt={hostel.name} 
                       className="w-full h-full object-cover"
                     />

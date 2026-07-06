@@ -9,7 +9,7 @@ import {
   Bed, Coffee 
 } from 'lucide-react';
 
-const BACKEND_URL = "http://localhost:5000"; 
+const BACKEND_URL = "https://student-nest-bjtk.onrender.com://localhost:5000"; 
 
 const HostelDetails = () => {
   const { id } = useParams();
