@@ -23,7 +23,6 @@ app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/hostels', require('./routes/hostelRoutes'));
 app.use('/api/bookings', require('./routes/bookingRoutes'));
 
-app.use('/uploads', express.static('uploads'));
 app.use('/api/owner', ownerRoutes);
 
 
