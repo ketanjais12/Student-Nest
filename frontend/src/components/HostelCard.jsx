@@ -13,7 +13,7 @@ const HostelCard = ({ hostel }) => {
   if (hostel?.images && hostel.images.length > 0) {
     let rawPath = hostel.images[0];
     let cleanPath = rawPath.replace(/\\/g, "/"); 
-    displayImage = `${BACKEND_URL}/${cleanPath}`;
+   displayImage = hostel.images[0];;
   }
 
 const getIcon = (name) => {
@@ -28,7 +28,10 @@ const getIcon = (name) => {
     if (n.includes('cctv') || n.includes('camera') || n.includes('security')) return Cctv;
     if (n.includes('laundry') || n.includes('washing')) return Shirt;
 
-    
+    console.log(hostel.name);
+console.log(hostel.images[0]);
+console.log(displayImage);
+
     return Check;
   };
 
@@ -103,6 +106,7 @@ const getIcon = (name) => {
       </div>
     </Link>
   );
+  
 };
 
 
