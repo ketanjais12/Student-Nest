@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { upload } = require('../config/cloudinary');
-const Hostel = require('./models/Hostel');
+const Hostel = require('../models/Hostel');
 
 const { 
   getHostels, 
