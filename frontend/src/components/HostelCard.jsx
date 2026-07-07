@@ -105,6 +105,5 @@ const getIcon = (name) => {
   );
 };
 
-console.log(hostel.images);
 
 export default HostelCard;
