@@ -9,7 +9,6 @@ import {
   Bed, Coffee 
 } from 'lucide-react';
 
-const BACKEND_URL = "https://student-nest-bjtk.onrender.com://localhost:5000"; 
 
 const HostelDetails = () => {
   const { id } = useParams();
@@ -29,11 +28,17 @@ const HostelDetails = () => {
     purpose: ''
   });
 
-  const getImageUrl = (imagePath) => {
-    if (!imagePath) return "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?q=80&w=800";
-    const cleanPath = imagePath.replace(/\\/g, "/");
-    return `${BACKEND_URL}/${cleanPath}`;
-  };
+const getImageUrl = (imagePath) => {
+  if (!imagePath) {
+    return "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?q=80&w=800";
+  }
+
+  if (imagePath.startsWith("http")) {
+    return imagePath;
+  }
+
+  return `https://student-nest-bjtk.onrender.com/${imagePath.replace(/\\/g, "/")}`;
+};
 
   const getIcon = (name) => {
     const n = name.toLowerCase();
