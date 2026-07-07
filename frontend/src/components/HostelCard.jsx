@@ -4,7 +4,8 @@ import {
   BedDouble, Wifi, Utensils, Snowflake, Check, Droplets, Cctv , Shirt
 } from "lucide-react";
 
-const BACKEND_URL = "http://https://student-nest-bjtk.onrender.com:5000"; 
+const BACKEND_URL = "https://student-nest-bjtk.onrender.com";
+
 
 const HostelCard = ({ hostel }) => {
   let displayImage = "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?q=80&w=800";
@@ -103,5 +104,7 @@ const getIcon = (name) => {
     </Link>
   );
 };
+
+console.log(hostel.images);
 
 export default HostelCard;
