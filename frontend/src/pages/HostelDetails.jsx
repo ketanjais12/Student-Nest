@@ -117,10 +117,10 @@ const getImageUrl = (imagePath) => {
           </div>
         </div>
 
-        <div className={`grid gap-2 mb-10 ${hostel.images?.length === 1 ? 'grid-cols-1' : 'grid-cols-2 md:grid-cols-4'} h-[400px]`}>
+        <div className={`grid gap-2 mb-10 ${hostel.images?.length === 1 ? 'grid-cols-1 grid-rows-1' : 'grid-cols-2 md:grid-cols-4 grid-rows-2'} h-[400px] overflow-hidden`}>
           {hostel.images?.length > 0 ? (
             <>
-              <div className={hostel.images.length === 1 ? "w-full h-full" : "col-span-2 row-span-2"}>
+              <div className={`min-h-0 w-full h-full ${hostel.images.length === 1 ? "" : "col-span-2 row-span-2"}`}>
                 <img 
                   src={getImageUrl(hostel.images[0])} 
                   className="w-full h-full object-cover rounded-2xl cursor-pointer hover:opacity-90 transition-opacity" 
@@ -128,14 +128,16 @@ const getImageUrl = (imagePath) => {
                   onClick={() => setSelectedImage(getImageUrl(hostel.images[0]))}
                 />
               </div>
+              
               {hostel.images.length > 1 && hostel.images.slice(1, 5).map((img, i) => (
-                <img 
-                  key={i} 
-                  src={getImageUrl(img)} 
-                  className="w-full h-full object-cover rounded-2xl hidden md:block cursor-pointer hover:opacity-90 transition-opacity" 
-                  alt={`Gallery ${i + 1}`} 
-                  onClick={() => setSelectedImage(getImageUrl(img))}
-                />
+                <div key={i} className="min-h-0 w-full h-full hidden md:block">
+                  <img 
+                    src={getImageUrl(img)} 
+                    className="w-full h-full object-cover rounded-2xl cursor-pointer hover:opacity-90 transition-opacity" 
+                    alt={`Gallery ${i + 1}`} 
+                    onClick={() => setSelectedImage(getImageUrl(img))}
+                  />
+                </div>
               ))}
             </>
           ) : (
