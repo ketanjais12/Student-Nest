@@ -117,34 +117,47 @@ const HostelDetails = () => {
           </div>
         </div>
 
-        <div className={`grid gap-2 mb-10 ${hostel.images?.length === 1 ? 'grid-cols-1 grid-rows-1 h-auto' : 'grid-cols-2 md:grid-cols-4 grid-rows-2 h-[400px]'} overflow-hidden`}>
+        <div className="mb-10 h-[400px]">
+          {hostel.images?.length === 1 ? (
+            
+            <div className="w-full h-full bg-gray-100 rounded-2xl flex items-center justify-center overflow-hidden border border-gray-200">
+              <img 
+                src={getImageUrl(hostel.images[0])} 
+                className="w-full h-full object-contain cursor-pointer hover:opacity-90 transition-opacity" 
+                alt="Main" 
+                onClick={() => setSelectedImage(getImageUrl(hostel.images[0]))}
+              />
+            </div>
 
-          {hostel.images?.length > 0 ? (
-            <>
-              <div className={`min-h-0 w-full h-full ${hostel.images.length === 1 ? "" : "col-span-2 row-span-2"}`}>
-                <img
-                  src={getImageUrl(hostel.images[0])}
-                  className="w-full h-full object-cover rounded-2xl cursor-pointer hover:opacity-90 transition-opacity"
-                  alt="Main"
+          ) : hostel.images?.length > 1 ? (
+            
+            <div className="grid gap-2 grid-cols-2 md:grid-cols-4 grid-rows-2 h-full overflow-hidden">
+              <div className="col-span-2 row-span-2 min-h-0 w-full h-full">
+                <img 
+                  src={getImageUrl(hostel.images[0])} 
+                  className="w-full h-full object-cover rounded-2xl cursor-pointer hover:opacity-90 transition-opacity" 
+                  alt="Main" 
                   onClick={() => setSelectedImage(getImageUrl(hostel.images[0]))}
                 />
               </div>
-
-              {hostel.images.length > 1 && hostel.images.slice(1, 5).map((img, i) => (
+              {hostel.images.slice(1, 5).map((img, i) => (
                 <div key={i} className="min-h-0 w-full h-full hidden md:block">
-                  <img
-                    src={getImageUrl(img)}
-                    className="w-full h-full object-cover rounded-2xl cursor-pointer hover:opacity-90 transition-opacity"
-                    alt={`Gallery ${i + 1}`}
+                  <img 
+                    src={getImageUrl(img)} 
+                    className="w-full h-full object-cover rounded-2xl cursor-pointer hover:opacity-90 transition-opacity" 
+                    alt={`Gallery ${i + 1}`} 
                     onClick={() => setSelectedImage(getImageUrl(img))}
                   />
                 </div>
               ))}
-            </>
-          ) : (
-            <div className="col-span-full h-full bg-gray-200 rounded-2xl flex items-center justify-center text-gray-400">
-              No images available
             </div>
+
+          ) : (
+             
+=             <div className="w-full h-full bg-gray-200 rounded-2xl flex items-center justify-center text-gray-500 font-medium">
+               No images available
+             </div>
+
           )}
         </div>
 
