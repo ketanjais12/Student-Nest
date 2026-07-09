@@ -34,10 +34,10 @@ const getImageUrl = (imagePath) => {
   }
 
   if (imagePath.startsWith("http")) {
-    return imagePath;
+    return imagePath.replace("https//", "https://"); // Prevents broken Cloudinary URLs
   }
 
-  return `https://student-nest-bjtk.onrender.com/${imagePath.replace(/\\/g, "/")}`;
+  return `https://student-nest-bjtk.onrender.com/${imagePath.replace(/\\/g, "/").replace(/^\//, '')}`;
 };
 
   const getIcon = (name) => {
@@ -120,7 +120,7 @@ const getImageUrl = (imagePath) => {
         <div className={`grid gap-2 mb-10 ${hostel.images?.length === 1 ? 'grid-cols-1' : 'grid-cols-2 md:grid-cols-4'} h-[400px]`}>
           {hostel.images?.length > 0 ? (
             <>
-              <div className="col-span-2 row-span-2">
+              <div className={hostel.images.length === 1 ? "w-full h-full" : "col-span-2 row-span-2"}>
                 <img 
                   src={getImageUrl(hostel.images[0])} 
                   className="w-full h-full object-cover rounded-2xl cursor-pointer hover:opacity-90 transition-opacity" 
@@ -128,7 +128,7 @@ const getImageUrl = (imagePath) => {
                   onClick={() => setSelectedImage(getImageUrl(hostel.images[0]))}
                 />
               </div>
-              {hostel.images.slice(1, 5).map((img, i) => (
+              {hostel.images.length > 1 && hostel.images.slice(1, 5).map((img, i) => (
                 <img 
                   key={i} 
                   src={getImageUrl(img)} 
@@ -139,7 +139,7 @@ const getImageUrl = (imagePath) => {
               ))}
             </>
           ) : (
-             <div className="col-span-4 h-full bg-gray-200 rounded-2xl flex items-center justify-center text-gray-400">
+             <div className="col-span-full h-full bg-gray-200 rounded-2xl flex items-center justify-center text-gray-400">
                No images available
              </div>
           )}
